@@ -262,6 +262,6 @@ The main working orchestration path is the local Tangle DAG. SkyPilot workloads 
 - Constraint enforcement is intentionally limited to catalog-truth fields like price and stock.
 - Entity expansion improves recall for some semantic queries but is still heuristic.
 
-## Best Next ML Step
+## Next Step
 
-Add a learned reranking stage or a typed entity linker over the fixed product catalog, then measure gains against the same benchmark and artifact structure instead of changing multiple parts of the pipeline at once.
+The next improvement I would make is a reranking layer on top of the current retrieval stack. That would give the system a cleaner way to sort semantically close candidates without turning soft signals like color or inferred entities into hard filters.
