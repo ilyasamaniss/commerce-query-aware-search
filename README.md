@@ -12,6 +12,12 @@ The system supports two search modes:
 Core principle: the LLM interprets intent and query meaning, but runtime code enforces truth from real catalog fields.
 If query-aware search is requested and the analyzer is unavailable, the run fails closed instead of silently degrading to a lexical baseline.
 
+## Storefront Context
+
+The project uses a Pokemon-themed storefront backed by the Shopify Storefront API.
+
+![Pokemon-themed storefront](docs/images/store-image.png)
+
 ## Example Query
 
 Example query:
@@ -28,6 +34,53 @@ What the system does with it:
 - Final filtering is deterministic: only products that are actually in stock and whose real catalog price falls between `$20` and `$30` are allowed through.
 
 That example captures the main design goal of the project: let the model interpret the user request, but keep catalog truth and hard constraints in code.
+
+## Tangle Workflow
+
+The smoke pipeline runs two benchmark branches in parallel, scores both locally, and compares the resulting metrics.
+
+![Tangle DAG for the smoke experiment](docs/images/tangle-dag.png)
+
+## Results
+
+### Smoke Benchmark Snapshot
+
+The local Tangle smoke pipeline scores 10 tasks and compares a plain BM25 baseline against BM25 plus Gemma-based query analysis.
+
+| System | Pass Rate | MRR@5 | Constraint Failures |
+| --- | ---: | ---: | ---: |
+| BM25 baseline | 50% (5/10) | 0.75 | 1 |
+| BM25 + Gemma query analysis | 70% (7/10) | 1.00 | 0 |
+
+### Full Prediction Pass
+
+The saved full-run prediction artifacts cover 100 queries. On the 76 title-grounded ranking tasks in that set, the query-aware run improved reciprocal-rank position on 16 tasks, regressed on 6, and tied the baseline on 54.
+
+### Representative Query Outcomes
+
+**`pikchu lego`**  
+Baseline top result: `Pokemon Rayquaza LEGO Building Set`  
+Query-aware top result: `Pokemon Pikachu LEGO Building Set`  
+Why it improved: the analyzer rewrote the misspelling and expanded retrieval toward the intended entity.
+
+**`in stock pokemon lego`**  
+Baseline top result: `Pokemon Lucario LEGO Building Set`  
+Query-aware top results: `Pokemon Pikachu LEGO Building Set`, `Pokemon Bulbasaur LEGO Building Set`, `Pokemon Snorlax LEGO Building Set`  
+Why it improved: query-aware search extracted `in_stock=true`, and deterministic filtering removed unavailable products from the final set.
+
+**`yellow electric mouse lego`**  
+Baseline top three: `Umbreon`, `Pikachu`, `Rayquaza`  
+Query-aware top three: `Pikachu`, `Umbreon`, `Eevee`  
+Why it improved: the analyzer surfaced the intended Pokemon concept instead of relying on lexical overlap alone.
+
+**`blue jackal pokemon lego`**  
+Baseline top three: `Eevee`, `Squirtle`, `Bulbasaur`  
+Query-aware top three: `Bulbasaur`, `Lucario`, `Eevee`  
+Why it improved: semantic expansion recovered `Lucario`, which the baseline missed entirely in the top three.
+
+### Remaining Limitations
+
+Broad browse-style requests such as `show me the catalog` still underperform because the current system is optimized for entity- or constraint-driven retrieval, not open-ended catalog browsing. The full run also still contains some semantic regressions, such as `sleepy big pokemon lego`, where the query-aware branch drifted away from the correct `Snorlax` result.
 
 ## Architecture
 
