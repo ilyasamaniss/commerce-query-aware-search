@@ -1,0 +1,104 @@
+{"id":"t001","query":"pikachu lego","expect":{"must_include_titles":["Pokemon Pikachu LEGO Building Set"],"top_k":5}}
+{"id":"t002","query":"pikachu","expect":{"must_include_titles":["Pokemon Pikachu LEGO Building Set"],"top_k":5}}
+{"id":"t003","query":"charizard lego","expect":{"must_include_titles":["Pokemon Charizard LEGO Building Set"],"top_k":5}}
+{"id":"t004","query":"charizard","expect":{"must_include_titles":["Pokemon Charizard LEGO Building Set"],"top_k":5}}
+{"id":"t005","query":"bulbasaur lego","expect":{"must_include_titles":["Pokemon Bulbasaur LEGO Building Set"],"top_k":5}}
+{"id":"t006","query":"bulbasaur","expect":{"must_include_titles":["Pokemon Bulbasaur LEGO Building Set"],"top_k":5}}
+{"id":"t007","query":"squirtle lego","expect":{"must_include_titles":["Pokemon Squirtle LEGO Building Set"],"top_k":5}}
+{"id":"t008","query":"squirtle","expect":{"must_include_titles":["Pokemon Squirtle LEGO Building Set"],"top_k":5}}
+{"id":"t009","query":"mewtwo lego","expect":{"must_include_titles":["Pokemon Mewtwo LEGO Building Set"],"top_k":5}}
+{"id":"t010","query":"mewtwo","expect":{"must_include_titles":["Pokemon Mewtwo LEGO Building Set"],"top_k":5}}
+{"id":"t011","query":"gengar lego","expect":{"must_include_titles":["Pokemon Gengar LEGO Building Set"],"top_k":5}}
+{"id":"t012","query":"gengar","expect":{"must_include_titles":["Pokemon Gengar LEGO Building Set"],"top_k":5}}
+{"id":"t013","query":"umbreon lego","expect":{"must_include_titles":["Pokemon Umbreon LEGO Building Set"],"top_k":5}}
+{"id":"t014","query":"umbreon","expect":{"must_include_titles":["Pokemon Umbreon LEGO Building Set"],"top_k":5}}
+{"id":"t015","query":"lucario lego","expect":{"must_include_titles":["Pokemon Lucario LEGO Building Set"],"top_k":5}}
+{"id":"t016","query":"lucario","expect":{"must_include_titles":["Pokemon Lucario LEGO Building Set"],"top_k":5}}
+{"id":"t017","query":"rayquaza lego","expect":{"must_include_titles":["Pokemon Rayquaza LEGO Building Set"],"top_k":5}}
+{"id":"t018","query":"rayquaza","expect":{"must_include_titles":["Pokemon Rayquaza LEGO Building Set"],"top_k":5}}
+{"id":"t019","query":"lapras lego","expect":{"must_include_titles":["Pokemon Lapras LEGO Building Set"],"top_k":5}}
+{"id":"t020","query":"lapras","expect":{"must_include_titles":["Pokemon Lapras LEGO Building Set"],"top_k":5}}
+{"id":"t021","query":"gyarados lego","expect":{"must_include_titles":["Pokemon Gyarados LEGO Building Set"],"top_k":5}}
+{"id":"t022","query":"gyarados","expect":{"must_include_titles":["Pokemon Gyarados LEGO Building Set"],"top_k":5}}
+{"id":"t023","query":"dragonite lego","expect":{"must_include_titles":["Pokemon Dragonite LEGO Building Set"],"top_k":5}}
+{"id":"t024","query":"dragonite","expect":{"must_include_titles":["Pokemon Dragonite LEGO Building Set"],"top_k":5}}
+{"id":"t025","query":"eevee lego","expect":{"must_include_titles":["Pokemon Eevee LEGO Building Set"],"top_k":5}}
+{"id":"t026","query":"eevee","expect":{"must_include_titles":["Pokemon Eevee LEGO Building Set"],"top_k":5}}
+{"id":"t027","query":"snorlax lego","expect":{"must_include_titles":["Pokemon Snorlax LEGO Building Set"],"top_k":5}}
+{"id":"t028","query":"snorlax","expect":{"must_include_titles":["Pokemon Snorlax LEGO Building Set"],"top_k":5}}
+{"id":"t029","query":"jigglypuff lego","expect":{"must_include_titles":["Pokemon Jigglypuff LEGO Building Set"],"top_k":5}}
+{"id":"t030","query":"jigglypuff","expect":{"must_include_titles":["Pokemon Jigglypuff LEGO Building Set"],"top_k":5}}
+
+{"id":"t031","query":"pikchu lego","expect":{"must_include_titles":["Pokemon Pikachu LEGO Building Set"],"top_k":5}}
+{"id":"t032","query":"picachu lego","expect":{"must_include_titles":["Pokemon Pikachu LEGO Building Set"],"top_k":5}}
+{"id":"t033","query":"charzard lego","expect":{"must_include_titles":["Pokemon Charizard LEGO Building Set"],"top_k":5}}
+{"id":"t034","query":"bulbasor lego","expect":{"must_include_titles":["Pokemon Bulbasaur LEGO Building Set"],"top_k":5}}
+{"id":"t035","query":"squritle lego","expect":{"must_include_titles":["Pokemon Squirtle LEGO Building Set"],"top_k":5}}
+{"id":"t036","query":"mew two lego","expect":{"must_include_titles":["Pokemon Mewtwo LEGO Building Set"],"top_k":5}}
+{"id":"t037","query":"gengarr lego","expect":{"must_include_titles":["Pokemon Gengar LEGO Building Set"],"top_k":5}}
+{"id":"t038","query":"umbreaon lego","expect":{"must_include_titles":["Pokemon Umbreon LEGO Building Set"],"top_k":5}}
+{"id":"t039","query":"lucairo lego","expect":{"must_include_titles":["Pokemon Lucario LEGO Building Set"],"top_k":5}}
+{"id":"t040","query":"rayqauza lego","expect":{"must_include_titles":["Pokemon Rayquaza LEGO Building Set"],"top_k":5}}
+{"id":"t041","query":"laprass lego","expect":{"must_include_titles":["Pokemon Lapras LEGO Building Set"],"top_k":5}}
+{"id":"t042","query":"gyaradoss lego","expect":{"must_include_titles":["Pokemon Gyarados LEGO Building Set"],"top_k":5}}
+{"id":"t043","query":"dragonnite lego","expect":{"must_include_titles":["Pokemon Dragonite LEGO Building Set"],"top_k":5}}
+{"id":"t044","query":"evee lego","expect":{"must_include_titles":["Pokemon Eevee LEGO Building Set"],"top_k":5}}
+{"id":"t045","query":"snorelax lego","expect":{"must_include_titles":["Pokemon Snorlax LEGO Building Set"],"top_k":5}}
+{"id":"t046","query":"jiglypuff lego","expect":{"must_include_titles":["Pokemon Jigglypuff LEGO Building Set"],"top_k":5}}
+
+{"id":"t047","query":"electric pokemon lego","expect":{"must_include_titles":["Pokemon Pikachu LEGO Building Set"],"top_k":5}}
+{"id":"t048","query":"yellow electric mouse lego","expect":{"must_include_titles":["Pokemon Pikachu LEGO Building Set"],"top_k":5}}
+{"id":"t049","query":"fire dragon pokemon lego","expect":{"must_include_titles":["Pokemon Charizard LEGO Building Set"],"top_k":5}}
+{"id":"t050","query":"red fire pokemon lego","expect":{"must_include_titles":["Pokemon Charizard LEGO Building Set"],"top_k":5}}
+{"id":"t051","query":"grass starter pokemon lego","expect":{"must_include_titles":["Pokemon Bulbasaur LEGO Building Set"],"top_k":5}}
+{"id":"t052","query":"green starter pokemon lego","expect":{"must_include_titles":["Pokemon Bulbasaur LEGO Building Set"],"top_k":5}}
+{"id":"t053","query":"water turtle pokemon lego","expect":{"must_include_titles":["Pokemon Squirtle LEGO Building Set"],"top_k":5}}
+{"id":"t054","query":"blue water pokemon lego","expect":{"must_include_titles":["Pokemon Squirtle LEGO Building Set"],"top_k":5}}
+{"id":"t055","query":"psychic legendary pokemon lego","expect":{"must_include_titles":["Pokemon Mewtwo LEGO Building Set"],"top_k":5}}
+{"id":"t056","query":"clone legendary pokemon lego","expect":{"must_include_titles":["Pokemon Mewtwo LEGO Building Set"],"top_k":5}}
+{"id":"t057","query":"ghost pokemon lego","expect":{"must_include_titles":["Pokemon Gengar LEGO Building Set"],"top_k":5}}
+{"id":"t058","query":"purple spooky pokemon lego","expect":{"must_include_titles":["Pokemon Gengar LEGO Building Set"],"top_k":5}}
+{"id":"t059","query":"dark pokemon lego","expect":{"must_include_titles":["Pokemon Umbreon LEGO Building Set"],"top_k":5}}
+{"id":"t060","query":"black eevee evolution lego","expect":{"must_include_titles":["Pokemon Umbreon LEGO Building Set"],"top_k":5}}
+{"id":"t061","query":"fighting pokemon lego","expect":{"must_include_titles":["Pokemon Lucario LEGO Building Set"],"top_k":5}}
+{"id":"t062","query":"blue jackal pokemon lego","expect":{"must_include_titles":["Pokemon Lucario LEGO Building Set"],"top_k":5}}
+{"id":"t063","query":"legendary sky dragon pokemon lego","expect":{"must_include_titles":["Pokemon Rayquaza LEGO Building Set"],"top_k":5}}
+{"id":"t064","query":"green dragon legendary pokemon lego","expect":{"must_include_titles":["Pokemon Rayquaza LEGO Building Set"],"top_k":5}}
+{"id":"t065","query":"ocean transport pokemon lego","expect":{"must_include_titles":["Pokemon Lapras LEGO Building Set"],"top_k":5}}
+{"id":"t066","query":"blue sea dinosaur pokemon lego","expect":{"must_include_titles":["Pokemon Lapras LEGO Building Set"],"top_k":5}}
+{"id":"t067","query":"giant sea serpent pokemon lego","expect":{"must_include_titles":["Pokemon Gyarados LEGO Building Set"],"top_k":5}}
+{"id":"t068","query":"angry water serpent pokemon lego","expect":{"must_include_titles":["Pokemon Gyarados LEGO Building Set"],"top_k":5}}
+{"id":"t069","query":"cute orange dragon pokemon lego","expect":{"must_include_titles":["Pokemon Dragonite LEGO Building Set"],"top_k":5}}
+{"id":"t070","query":"friendly dragon pokemon lego","expect":{"must_include_titles":["Pokemon Dragonite LEGO Building Set"],"top_k":5}}
+{"id":"t071","query":"pokemon evolution mascot lego","expect":{"must_include_titles":["Pokemon Eevee LEGO Building Set"],"top_k":5}}
+{"id":"t072","query":"brown fluffy pokemon lego","expect":{"must_include_titles":["Pokemon Eevee LEGO Building Set"],"top_k":5}}
+{"id":"t073","query":"sleepy big pokemon lego","expect":{"must_include_titles":["Pokemon Snorlax LEGO Building Set"],"top_k":5}}
+{"id":"t074","query":"big blue sleeping pokemon lego","expect":{"must_include_titles":["Pokemon Snorlax LEGO Building Set"],"top_k":5}}
+{"id":"t075","query":"pink singer pokemon lego","expect":{"must_include_titles":["Pokemon Jigglypuff LEGO Building Set"],"top_k":5}}
+{"id":"t076","query":"cute pink pokemon lego","expect":{"must_include_titles":["Pokemon Jigglypuff LEGO Building Set"],"top_k":5}}
+
+{"id":"t077","query":"pokemon lego set","expect":{"min_results":5}}
+{"id":"t078","query":"lego pokemon building set","expect":{"min_results":5}}
+{"id":"t079","query":"all pokemon lego","expect":{"min_results":10}}
+{"id":"t080","query":"show me the catalog","expect":{"min_results":10}}
+{"id":"t081","query":"what pokemon sets do you have","expect":{"min_results":10}}
+{"id":"t082","query":"browse all sets","expect":{"min_results":10}}
+{"id":"t083","query":"new pokemon lego set","expect":{"min_results":1}}
+{"id":"t084","query":"best seller pokemon lego","expect":{"min_results":1}}
+{"id":"t085","query":"gift idea pokemon lego","expect":{"min_results":1}}
+{"id":"t086","query":"gift for kid pokemon lego","expect":{"min_results":1}}
+{"id":"t087","query":"gift for adult pokemon lego","expect":{"min_results":1}}
+{"id":"t088","query":"starter set pokemon lego","expect":{"min_results":1}}
+{"id":"t089","query":"collector pokemon lego","expect":{"min_results":1}}
+{"id":"t090","query":"premium pokemon lego set","expect":{"min_results":1}}
+
+{"id":"t091","query":"in stock pokemon lego","expect":{"constraints":{"in_stock":true},"min_results":3}}
+{"id":"t092","query":"available now pokemon lego","expect":{"constraints":{"in_stock":true},"min_results":3}}
+{"id":"t093","query":"pokemon lego not sold out","expect":{"constraints":{"in_stock":true},"min_results":3}}
+{"id":"t094","query":"pokemon lego under 200","expect":{"constraints":{"price_max":200},"min_results":5}}
+{"id":"t095","query":"pokemon lego above 50","expect":{"constraints":{"price_min":50},"min_results":5}}
+{"id":"t096","query":"cheap pokemon lego","expect":{"min_results":1}}
+{"id":"t097","query":"pokemon lego under 100","expect":{"min_results":1}}
+{"id":"t098","query":"pokemon lego around 90","expect":{"min_results":1}}
+{"id":"t099","query":"something that doesnt exist in this store","expect":{"max_results":0}}
+{"id":"t100","query":"random nonsense query zxqv","expect":{"max_results":0}}

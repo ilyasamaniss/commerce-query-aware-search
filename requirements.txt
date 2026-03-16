@@ -1,0 +1,6 @@
+requests
+python-dotenv
+pydantic
+numpy
+rank-bm25
+urllib3<2

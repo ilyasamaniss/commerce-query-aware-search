@@ -1,0 +1,10 @@
+{"id":"s001","query":"pikachu lego","expect":{"must_include_titles":["Pokemon Pikachu LEGO Building Set"],"top_k":5}}
+{"id":"s002","query":"charizard lego","expect":{"must_include_titles":["Pokemon Charizard LEGO Building Set"],"top_k":5}}
+{"id":"s003","query":"pikchu lego","expect":{"must_include_titles":["Pokemon Pikachu LEGO Building Set"],"top_k":5}}
+{"id":"s004","query":"fire dragon pokemon lego","expect":{"must_include_titles":["Pokemon Charizard LEGO Building Set"],"top_k":5}}
+{"id":"s005","query":"show me the catalog","expect":{"min_results":10}}
+{"id":"s006","query":"in stock pokemon lego","expect":{"constraints":{"in_stock":true},"min_results":3}}
+{"id":"s007","query":"pokemon lego under 200","expect":{"constraints":{"price_max":200},"min_results":5}}
+{"id":"s008","query":"pokemon lego above 50","expect":{"constraints":{"price_min":50},"min_results":5}}
+{"id":"s009","query":"pokemon lego under 100","expect":{"min_results":1}}
+{"id":"s010","query":"random nonsense query zxqv","expect":{"max_results":0}}

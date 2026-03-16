@@ -1,0 +1,47 @@
+name: run_search_benchmark
+description: Execute a benchmark task file and write predictions JSONL.
+metadata:
+  annotations:
+    owner: shopify-ml-demo
+    execution_contract: requires_local_tangle_image_with_repo_at_/app
+
+inputs:
+  - name: tasks
+    description: Repo-relative benchmark task path inside the local Tangle image.
+    type: String
+  - name: retriever
+    description: Retriever kind to use for candidate generation.
+    type: String
+  - name: query_analyzer
+    description: Analyzer model name, or "none" for baseline lexical retrieval.
+    type: String
+    default: none
+  - name: product_limit
+    description: Maximum number of products to fetch from Shopify.
+    type: Integer
+  - name: k
+    description: Number of final predictions to keep per task.
+    type: Integer
+
+outputs:
+  - name: predictions
+    description: Benchmark predictions JSONL artifact.
+    type: Data
+
+implementation:
+  container:
+    image: shopify-ml-demo:tangle-local
+    command: ["python3", "/app/scripts/run_search_benchmark.py"]
+    args:
+      - "--tasks"
+      - { inputValue: tasks }
+      - "--out"
+      - { outputPath: predictions }
+      - "--retriever"
+      - { inputValue: retriever }
+      - "--query-analyzer"
+      - { inputValue: query_analyzer }
+      - "--product-limit"
+      - { inputValue: product_limit }
+      - "--k"
+      - { inputValue: k }

@@ -1,0 +1,526 @@
+name: search experiment smoke
+metadata:
+  annotations:
+    sdk: https://cloud-pipelines.net/pipeline-editor/
+    editor.flow-direction: left-to-right
+inputs:
+  - name: tasksPath
+    type: any
+    default: benchmarks/tasks/smoke.jsonl
+    optional: false
+    annotations:
+      editor.position: '{"x":-360,"y":260}'
+    value: benchmarks/tasks/smoke.jsonl
+implementation:
+  graph:
+    tasks:
+      run_search_benchmark:
+        componentRef:
+          spec:
+            name: run_search_benchmark
+            description: Execute a benchmark task file and write predictions JSONL.
+            metadata:
+              annotations:
+                owner: shopify-ml-demo
+                execution_contract: requires_local_tangle_image_with_repo_at_/app
+            inputs:
+              - name: tasks
+                description: Repo-relative benchmark task path inside the local Tangle image.
+                type: String
+              - name: retriever
+                description: Retriever kind to use for candidate generation.
+                type: String
+              - name: query_analyzer
+                description: Analyzer model name, or "none" for baseline lexical retrieval.
+                type: String
+                default: none
+              - name: product_limit
+                description: Maximum number of products to fetch from Shopify.
+                type: Integer
+              - name: k
+                description: Number of final predictions to keep per task.
+                type: Integer
+            outputs:
+              - name: predictions
+                description: Benchmark predictions JSONL artifact.
+                type: Data
+            implementation:
+              container:
+                image: shopify-ml-demo:tangle-local
+                command:
+                  - python3
+                  - /app/scripts/run_search_benchmark.py
+                args:
+                  - '--tasks'
+                  - inputValue: tasks
+                  - '--out'
+                  - outputPath: predictions
+                  - '--retriever'
+                  - inputValue: retriever
+                  - '--query-analyzer'
+                  - inputValue: query_analyzer
+                  - '--product-limit'
+                  - inputValue: product_limit
+                  - '--k'
+                  - inputValue: k
+          digest: 7abb584d0f717dbd3061b3a9f94cf78456e7cc1db74190cbd0373fb4824fd515
+          text: |
+            name: run_search_benchmark
+            description: Execute a benchmark task file and write predictions JSONL.
+            metadata:
+              annotations:
+                owner: shopify-ml-demo
+                execution_contract: requires_local_tangle_image_with_repo_at_/app
+
+            inputs:
+              - name: tasks
+                description: Repo-relative benchmark task path inside the local Tangle image.
+                type: String
+              - name: retriever
+                description: Retriever kind to use for candidate generation.
+                type: String
+              - name: query_analyzer
+                description: Analyzer model name, or "none" for baseline lexical retrieval.
+                type: String
+                default: none
+              - name: product_limit
+                description: Maximum number of products to fetch from Shopify.
+                type: Integer
+              - name: k
+                description: Number of final predictions to keep per task.
+                type: Integer
+
+            outputs:
+              - name: predictions
+                description: Benchmark predictions JSONL artifact.
+                type: Data
+
+            implementation:
+              container:
+                image: shopify-ml-demo:tangle-local
+                command: ["python3", "/app/scripts/run_search_benchmark.py"]
+                args:
+                  - "--tasks"
+                  - { inputValue: tasks }
+                  - "--out"
+                  - { outputPath: predictions }
+                  - "--retriever"
+                  - { inputValue: retriever }
+                  - "--query-analyzer"
+                  - { inputValue: query_analyzer }
+                  - "--product-limit"
+                  - { inputValue: product_limit }
+                  - "--k"
+                  - { inputValue: k }
+          favorited: true
+          name: run_search_benchmark
+          owned: true
+        annotations:
+          editor.position: '{"x":80,"y":-40}'
+        arguments:
+          tasks:
+            graphInput:
+              inputName: tasksPath
+          retriever: bm25
+          query_analyzer: none
+          product_limit: '200'
+          k: '3'
+      run_search_benchmark 2:
+        componentRef:
+          spec:
+            name: run_search_benchmark
+            description: Execute a benchmark task file and write predictions JSONL.
+            metadata:
+              annotations:
+                owner: shopify-ml-demo
+                execution_contract: requires_local_tangle_image_with_repo_at_/app
+            inputs:
+              - name: tasks
+                description: Repo-relative benchmark task path inside the local Tangle image.
+                type: String
+              - name: retriever
+                description: Retriever kind to use for candidate generation.
+                type: String
+              - name: query_analyzer
+                description: Analyzer model name, or "none" for baseline lexical retrieval.
+                type: String
+                default: none
+              - name: product_limit
+                description: Maximum number of products to fetch from Shopify.
+                type: Integer
+              - name: k
+                description: Number of final predictions to keep per task.
+                type: Integer
+            outputs:
+              - name: predictions
+                description: Benchmark predictions JSONL artifact.
+                type: Data
+            implementation:
+              container:
+                image: shopify-ml-demo:tangle-local
+                command:
+                  - python3
+                  - /app/scripts/run_search_benchmark.py
+                args:
+                  - '--tasks'
+                  - inputValue: tasks
+                  - '--out'
+                  - outputPath: predictions
+                  - '--retriever'
+                  - inputValue: retriever
+                  - '--query-analyzer'
+                  - inputValue: query_analyzer
+                  - '--product-limit'
+                  - inputValue: product_limit
+                  - '--k'
+                  - inputValue: k
+          digest: 7abb584d0f717dbd3061b3a9f94cf78456e7cc1db74190cbd0373fb4824fd515
+          text: |
+            name: run_search_benchmark
+            description: Execute a benchmark task file and write predictions JSONL.
+            metadata:
+              annotations:
+                owner: shopify-ml-demo
+                execution_contract: requires_local_tangle_image_with_repo_at_/app
+
+            inputs:
+              - name: tasks
+                description: Repo-relative benchmark task path inside the local Tangle image.
+                type: String
+              - name: retriever
+                description: Retriever kind to use for candidate generation.
+                type: String
+              - name: query_analyzer
+                description: Analyzer model name, or "none" for baseline lexical retrieval.
+                type: String
+                default: none
+              - name: product_limit
+                description: Maximum number of products to fetch from Shopify.
+                type: Integer
+              - name: k
+                description: Number of final predictions to keep per task.
+                type: Integer
+
+            outputs:
+              - name: predictions
+                description: Benchmark predictions JSONL artifact.
+                type: Data
+
+            implementation:
+              container:
+                image: shopify-ml-demo:tangle-local
+                command: ["python3", "/app/scripts/run_search_benchmark.py"]
+                args:
+                  - "--tasks"
+                  - { inputValue: tasks }
+                  - "--out"
+                  - { outputPath: predictions }
+                  - "--retriever"
+                  - { inputValue: retriever }
+                  - "--query-analyzer"
+                  - { inputValue: query_analyzer }
+                  - "--product-limit"
+                  - { inputValue: product_limit }
+                  - "--k"
+                  - { inputValue: k }
+          favorited: true
+          name: run_search_benchmark
+          owned: true
+        annotations:
+          editor.position: '{"x":90,"y":460}'
+        arguments:
+          tasks:
+            graphInput:
+              inputName: tasksPath
+          retriever: bm25
+          query_analyzer: gemma3:4b
+          product_limit: '200'
+          k: '3'
+      compare_runs:
+        componentRef:
+          spec:
+            name: compare_runs
+            description: Compare baseline and candidate metrics artifacts.
+            metadata:
+              annotations:
+                owner: shopify-ml-demo
+                execution_contract: requires_local_tangle_image_with_repo_at_/app
+            inputs:
+              - name: baseline_label
+                description: Human-readable label for the baseline run.
+                type: String
+              - name: baseline_metrics
+                description: Metrics JSON artifact for the baseline run.
+                type: Data
+              - name: candidate_label
+                description: Human-readable label for the candidate run.
+                type: String
+              - name: candidate_metrics
+                description: Metrics JSON artifact for the candidate run.
+                type: Data
+            outputs:
+              - name: comparison_json
+                description: Structured JSON comparison artifact.
+                type: Data
+              - name: comparison_md
+                description: Markdown report comparing the two runs.
+                type: Data
+            implementation:
+              container:
+                image: shopify-ml-demo:tangle-local
+                command:
+                  - python3
+                  - /app/scripts/compare_runs.py
+                args:
+                  - '--baseline-metrics'
+                  - inputPath: baseline_metrics
+                  - '--candidate-metrics'
+                  - inputPath: candidate_metrics
+                  - '--out-json'
+                  - outputPath: comparison_json
+                  - '--out-md'
+                  - outputPath: comparison_md
+                  - '--baseline-label'
+                  - inputValue: baseline_label
+                  - '--candidate-label'
+                  - inputValue: candidate_label
+          digest: 4c2417f340d0fbe63da97c1cf9eaf5325aaf519fb3b077544f616a4bbf1e99dc
+          text: |
+            name: compare_runs
+            description: Compare baseline and candidate metrics artifacts.
+            metadata:
+              annotations:
+                owner: shopify-ml-demo
+                execution_contract: requires_local_tangle_image_with_repo_at_/app
+
+            inputs:
+              - name: baseline_label
+                description: Human-readable label for the baseline run.
+                type: String
+              - name: baseline_metrics
+                description: Metrics JSON artifact for the baseline run.
+                type: Data
+              - name: candidate_label
+                description: Human-readable label for the candidate run.
+                type: String
+              - name: candidate_metrics
+                description: Metrics JSON artifact for the candidate run.
+                type: Data
+
+
+            outputs:
+              - name: comparison_json
+                description: Structured JSON comparison artifact.
+                type: Data
+              - name: comparison_md
+                description: Markdown report comparing the two runs.
+                type: Data
+
+            implementation:
+              container:
+                image: shopify-ml-demo:tangle-local
+                command: ["python3", "/app/scripts/compare_runs.py"]
+                args:
+                  - "--baseline-metrics"
+                  - { inputPath: baseline_metrics }
+                  - "--candidate-metrics"
+                  - { inputPath: candidate_metrics }
+                  - "--out-json"
+                  - { outputPath: comparison_json }
+                  - "--out-md"
+                  - { outputPath: comparison_md }
+                  - "--baseline-label"
+                  - { inputValue: baseline_label }
+                  - "--candidate-label"
+                  - { inputValue: candidate_label }
+          favorited: true
+          name: compare_runs
+          owned: true
+        annotations:
+          editor.position: '{"x":950,"y":310}'
+        arguments:
+          baseline_label: bm25_analyzer=none
+          candidate_label: bm25_analyzer=gemma3_4b
+          baseline_metrics:
+            taskOutput:
+              taskId: score_benchmark
+              outputName: metrics
+          candidate_metrics:
+            taskOutput:
+              taskId: score_benchmark 2
+              outputName: metrics
+      score_benchmark:
+        componentRef:
+          spec:
+            name: score_benchmark
+            description: Score prediction rows and emit metrics plus failures.
+            metadata:
+              annotations:
+                owner: shopify-ml-demo
+                execution_contract: requires_local_tangle_image_with_repo_at_/app
+            inputs:
+              - name: results
+                description: Predictions JSONL artifact to score.
+                type: Data
+              - name: k
+                description: Cutoff used when computing ranking metrics.
+                type: Integer
+            outputs:
+              - name: metrics
+                description: Aggregate metrics JSON artifact.
+                type: Data
+              - name: failures
+                description: JSONL artifact containing failed benchmark cases.
+                type: Data
+            implementation:
+              container:
+                image: shopify-ml-demo:tangle-local
+                command:
+                  - python3
+                  - /app/scripts/score_benchmark.py
+                args:
+                  - '--results'
+                  - inputPath: results
+                  - '--metrics-out'
+                  - outputPath: metrics
+                  - '--failures-out'
+                  - outputPath: failures
+                  - '--k'
+                  - inputValue: k
+          digest: 88d1152ee17416929aa563cd4ee3397a69ce0ee940caf4bae1a019dbea3d1350
+          text: |
+            name: score_benchmark
+            description: Score prediction rows and emit metrics plus failures.
+            metadata:
+              annotations:
+                owner: shopify-ml-demo
+                execution_contract: requires_local_tangle_image_with_repo_at_/app
+
+            inputs:
+              - name: results
+                description: Predictions JSONL artifact to score.
+                type: Data
+              - name: k
+                description: Cutoff used when computing ranking metrics.
+                type: Integer
+
+            outputs:
+              - name: metrics
+                description: Aggregate metrics JSON artifact.
+                type: Data
+              - name: failures
+                description: JSONL artifact containing failed benchmark cases.
+                type: Data
+
+            implementation:
+              container:
+                image: shopify-ml-demo:tangle-local
+                command: ["python3", "/app/scripts/score_benchmark.py"]
+                args:
+                  - "--results"
+                  - { inputPath: results }
+                  - "--metrics-out"
+                  - { outputPath: metrics }
+                  - "--failures-out"
+                  - { outputPath: failures }
+                  - "--k"
+                  - { inputValue: k }
+          favorited: true
+          name: score_benchmark
+          owned: true
+        annotations:
+          editor.position: '{"x":500,"y":30}'
+        arguments:
+          results:
+            taskOutput:
+              taskId: run_search_benchmark
+              outputName: predictions
+          k: '5'
+      score_benchmark 2:
+        componentRef:
+          spec:
+            name: score_benchmark
+            description: Score prediction rows and emit metrics plus failures.
+            metadata:
+              annotations:
+                owner: shopify-ml-demo
+                execution_contract: requires_local_tangle_image_with_repo_at_/app
+            inputs:
+              - name: results
+                description: Predictions JSONL artifact to score.
+                type: Data
+              - name: k
+                description: Cutoff used when computing ranking metrics.
+                type: Integer
+            outputs:
+              - name: metrics
+                description: Aggregate metrics JSON artifact.
+                type: Data
+              - name: failures
+                description: JSONL artifact containing failed benchmark cases.
+                type: Data
+            implementation:
+              container:
+                image: shopify-ml-demo:tangle-local
+                command:
+                  - python3
+                  - /app/scripts/score_benchmark.py
+                args:
+                  - '--results'
+                  - inputPath: results
+                  - '--metrics-out'
+                  - outputPath: metrics
+                  - '--failures-out'
+                  - outputPath: failures
+                  - '--k'
+                  - inputValue: k
+          digest: 88d1152ee17416929aa563cd4ee3397a69ce0ee940caf4bae1a019dbea3d1350
+          text: |
+            name: score_benchmark
+            description: Score prediction rows and emit metrics plus failures.
+            metadata:
+              annotations:
+                owner: shopify-ml-demo
+                execution_contract: requires_local_tangle_image_with_repo_at_/app
+
+            inputs:
+              - name: results
+                description: Predictions JSONL artifact to score.
+                type: Data
+              - name: k
+                description: Cutoff used when computing ranking metrics.
+                type: Integer
+
+            outputs:
+              - name: metrics
+                description: Aggregate metrics JSON artifact.
+                type: Data
+              - name: failures
+                description: JSONL artifact containing failed benchmark cases.
+                type: Data
+
+            implementation:
+              container:
+                image: shopify-ml-demo:tangle-local
+                command: ["python3", "/app/scripts/score_benchmark.py"]
+                args:
+                  - "--results"
+                  - { inputPath: results }
+                  - "--metrics-out"
+                  - { outputPath: metrics }
+                  - "--failures-out"
+                  - { outputPath: failures }
+                  - "--k"
+                  - { inputValue: k }
+          favorited: true
+          name: score_benchmark
+          owned: true
+        annotations:
+          editor.position: '{"x":510,"y":480}'
+        arguments:
+          results:
+            taskOutput:
+              taskId: run_search_benchmark 2
+              outputName: predictions
+          k: '5'
+    outputValues: {}

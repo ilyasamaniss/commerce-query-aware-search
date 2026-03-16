@@ -1,0 +1,70 @@
+name: pokemon-search-full-eval
+
+resources:
+  cpus: 4+
+  memory: 8+
+
+workdir: .
+
+envs:
+  SHOPIFY_STORE_DOMAIN: null
+  OLLAMA_URL: http://127.0.0.1:11434/api/generate
+  OLLAMA_MODEL: gemma3:4b
+  TASKS_PATH: benchmarks/tasks/full.jsonl
+  RETRIEVER: bm25
+  QUERY_ANALYZER: gemma3:4b
+  PREDICTIONS_OUT: artifacts/full/retriever=bm25__analyzer=gemma3_4b/predictions.jsonl
+  METRICS_OUT: artifacts/full/retriever=bm25__analyzer=gemma3_4b/metrics.json
+  FAILURES_OUT: artifacts/full/retriever=bm25__analyzer=gemma3_4b/failures.jsonl
+  PRODUCT_LIMIT: 200
+  K: 3
+
+secrets:
+  SHOPIFY_STOREFRONT_TOKEN: null
+
+setup: |
+  set -euo pipefail
+
+  python3 -m pip install --upgrade pip
+  pip install -r requirements.txt
+
+  if command -v apt-get >/dev/null 2>&1; then
+    sudo apt-get update
+    sudo apt-get install -y curl zstd
+  elif command -v dnf >/dev/null 2>&1; then
+    sudo dnf install -y curl zstd
+  elif command -v yum >/dev/null 2>&1; then
+    sudo yum install -y curl zstd
+  else
+    echo "No supported package manager found to install zstd/curl."
+    exit 1
+  fi
+
+  curl -fsSL https://ollama.com/install.sh | sh
+  ollama --version
+
+run: |
+  set -euo pipefail
+
+  mkdir -p "$(dirname "${PREDICTIONS_OUT}")"
+
+  ollama serve > ollama.log 2>&1 &
+  OLLAMA_PID=$!
+  trap 'kill ${OLLAMA_PID} || true' EXIT
+
+  sleep 8
+  ollama pull "${OLLAMA_MODEL}"
+
+  python3 scripts/run_search_benchmark.py \
+    --tasks "${TASKS_PATH}" \
+    --retriever "${RETRIEVER}" \
+    --query-analyzer "${QUERY_ANALYZER}" \
+    --product-limit "${PRODUCT_LIMIT}" \
+    --k "${K}" \
+    --out "${PREDICTIONS_OUT}"
+
+  python3 scripts/score_benchmark.py \
+    --results "${PREDICTIONS_OUT}" \
+    --metrics-out "${METRICS_OUT}" \
+    --failures-out "${FAILURES_OUT}" \
+    --k 5
