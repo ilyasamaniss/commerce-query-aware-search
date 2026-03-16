@@ -246,15 +246,20 @@ SkyPilot workloads live in [orchestration/skypilot](orchestration/skypilot):
 - `sky_full_eval.yaml`: full benchmark batch run
 - `sky_devbox.yaml`: interactive environment for debugging
 
-SkyPilot configs own execution environment concerns only:
+In this project, SkyPilot is used as a declarative execution layer: each YAML defines the resources, environment variables, secrets, setup steps, and CLI entrypoint for a workload. That keeps the execution contract in one place and separates it from the search logic itself.
+
+This is similar in spirit to how Shopify describes using SkyPilot internally: engineers work through YAML-defined jobs instead of hand-configuring infrastructure for each workload. The difference here is scope. This repo uses SkyPilot for local and simple batch execution patterns, not for multi-cloud routing, quota management, or organization-wide policy enforcement.
+
+SkyPilot configs in this repo own execution-environment concerns only:
 
 - package installation
 - Ollama installation/startup
 - env/secrets wiring
 - which CLI entrypoint is executed
 
-They do not contain retrieval or scoring logic.
-The main working orchestration path is the local Tangle DAG. SkyPilot workloads remain in the repo as separate reproducible batch workloads.
+They do not contain the retrieval, scoring, or comparison logic itself.
+
+The current working orchestration path is the local Tangle DAG. SkyPilot remains in the repo as a parallel way to express benchmark, evaluation, and devbox workloads, and those YAMLs can be adapted to other SkyPilot-supported backends by changing resource, secret, and runtime details.
 
 ## Limitations
 
