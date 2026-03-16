@@ -1,6 +1,6 @@
-# Shopify Search Benchmark
+# Commerce Query-Aware Search
 
-Applied ML/search project for a Shopify-style Pokemon LEGO storefront. The repo is structured to show practical search engineering, deterministic commerce correctness, reproducible benchmarking, and clear orchestration boundaries for Tangle and SkyPilot.
+Applied ML/search project for a Pokemon-themed storefront built on the Shopify Storefront API. The repo is structured to show practical search engineering, deterministic commerce correctness, reproducible benchmarking, and clear orchestration boundaries for Tangle and SkyPilot.
 
 ## Overview
 
@@ -173,7 +173,7 @@ The smoke pipeline in [pipeline.yaml](orchestration/tangle/pipelines/search_expe
 For local Tangle execution, build the local component image first:
 
 ```bash
-docker build -t shopify-ml-demo:tangle-local .
+docker build -t commerce-query-aware-search:tangle-local .
 ```
 
 And keep Docker running before starting the Tangle backend. If you want the structured branch to execute inside Tangle, run Ollama on the host as well:

@@ -2,7 +2,7 @@ name: compare_runs
 description: Compare baseline and candidate metrics artifacts.
 metadata:
   annotations:
-    owner: shopify-ml-demo
+    owner: commerce-query-aware-search
     execution_contract: requires_local_tangle_image_with_repo_at_/app
 
 inputs:
@@ -30,7 +30,7 @@ outputs:
 
 implementation:
   container:
-    image: shopify-ml-demo:tangle-local
+    image: commerce-query-aware-search:tangle-local
     command: ["python3", "/app/scripts/compare_runs.py"]
     args:
       - "--baseline-metrics"

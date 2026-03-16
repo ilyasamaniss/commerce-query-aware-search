@@ -21,7 +21,7 @@ implementation:
             description: Execute a benchmark task file and write predictions JSONL.
             metadata:
               annotations:
-                owner: shopify-ml-demo
+                owner: commerce-query-aware-search
                 execution_contract: requires_local_tangle_image_with_repo_at_/app
             inputs:
               - name: tasks
@@ -46,7 +46,7 @@ implementation:
                 type: Data
             implementation:
               container:
-                image: shopify-ml-demo:tangle-local
+                image: commerce-query-aware-search:tangle-local
                 command:
                   - python3
                   - /app/scripts/run_search_benchmark.py
@@ -69,7 +69,7 @@ implementation:
             description: Execute a benchmark task file and write predictions JSONL.
             metadata:
               annotations:
-                owner: shopify-ml-demo
+                owner: commerce-query-aware-search
                 execution_contract: requires_local_tangle_image_with_repo_at_/app
 
             inputs:
@@ -97,7 +97,7 @@ implementation:
 
             implementation:
               container:
-                image: shopify-ml-demo:tangle-local
+                image: commerce-query-aware-search:tangle-local
                 command: ["python3", "/app/scripts/run_search_benchmark.py"]
                 args:
                   - "--tasks"
@@ -132,7 +132,7 @@ implementation:
             description: Execute a benchmark task file and write predictions JSONL.
             metadata:
               annotations:
-                owner: shopify-ml-demo
+                owner: commerce-query-aware-search
                 execution_contract: requires_local_tangle_image_with_repo_at_/app
             inputs:
               - name: tasks
@@ -157,7 +157,7 @@ implementation:
                 type: Data
             implementation:
               container:
-                image: shopify-ml-demo:tangle-local
+                image: commerce-query-aware-search:tangle-local
                 command:
                   - python3
                   - /app/scripts/run_search_benchmark.py
@@ -180,7 +180,7 @@ implementation:
             description: Execute a benchmark task file and write predictions JSONL.
             metadata:
               annotations:
-                owner: shopify-ml-demo
+                owner: commerce-query-aware-search
                 execution_contract: requires_local_tangle_image_with_repo_at_/app
 
             inputs:
@@ -208,7 +208,7 @@ implementation:
 
             implementation:
               container:
-                image: shopify-ml-demo:tangle-local
+                image: commerce-query-aware-search:tangle-local
                 command: ["python3", "/app/scripts/run_search_benchmark.py"]
                 args:
                   - "--tasks"
@@ -243,7 +243,7 @@ implementation:
             description: Compare baseline and candidate metrics artifacts.
             metadata:
               annotations:
-                owner: shopify-ml-demo
+                owner: commerce-query-aware-search
                 execution_contract: requires_local_tangle_image_with_repo_at_/app
             inputs:
               - name: baseline_label
@@ -267,7 +267,7 @@ implementation:
                 type: Data
             implementation:
               container:
-                image: shopify-ml-demo:tangle-local
+                image: commerce-query-aware-search:tangle-local
                 command:
                   - python3
                   - /app/scripts/compare_runs.py
@@ -290,7 +290,7 @@ implementation:
             description: Compare baseline and candidate metrics artifacts.
             metadata:
               annotations:
-                owner: shopify-ml-demo
+                owner: commerce-query-aware-search
                 execution_contract: requires_local_tangle_image_with_repo_at_/app
 
             inputs:
@@ -318,7 +318,7 @@ implementation:
 
             implementation:
               container:
-                image: shopify-ml-demo:tangle-local
+                image: commerce-query-aware-search:tangle-local
                 command: ["python3", "/app/scripts/compare_runs.py"]
                 args:
                   - "--baseline-metrics"
@@ -356,7 +356,7 @@ implementation:
             description: Score prediction rows and emit metrics plus failures.
             metadata:
               annotations:
-                owner: shopify-ml-demo
+                owner: commerce-query-aware-search
                 execution_contract: requires_local_tangle_image_with_repo_at_/app
             inputs:
               - name: results
@@ -374,7 +374,7 @@ implementation:
                 type: Data
             implementation:
               container:
-                image: shopify-ml-demo:tangle-local
+                image: commerce-query-aware-search:tangle-local
                 command:
                   - python3
                   - /app/scripts/score_benchmark.py
@@ -393,7 +393,7 @@ implementation:
             description: Score prediction rows and emit metrics plus failures.
             metadata:
               annotations:
-                owner: shopify-ml-demo
+                owner: commerce-query-aware-search
                 execution_contract: requires_local_tangle_image_with_repo_at_/app
 
             inputs:
@@ -414,7 +414,7 @@ implementation:
 
             implementation:
               container:
-                image: shopify-ml-demo:tangle-local
+                image: commerce-query-aware-search:tangle-local
                 command: ["python3", "/app/scripts/score_benchmark.py"]
                 args:
                   - "--results"
@@ -443,7 +443,7 @@ implementation:
             description: Score prediction rows and emit metrics plus failures.
             metadata:
               annotations:
-                owner: shopify-ml-demo
+                owner: commerce-query-aware-search
                 execution_contract: requires_local_tangle_image_with_repo_at_/app
             inputs:
               - name: results
@@ -461,7 +461,7 @@ implementation:
                 type: Data
             implementation:
               container:
-                image: shopify-ml-demo:tangle-local
+                image: commerce-query-aware-search:tangle-local
                 command:
                   - python3
                   - /app/scripts/score_benchmark.py
@@ -480,7 +480,7 @@ implementation:
             description: Score prediction rows and emit metrics plus failures.
             metadata:
               annotations:
-                owner: shopify-ml-demo
+                owner: commerce-query-aware-search
                 execution_contract: requires_local_tangle_image_with_repo_at_/app
 
             inputs:
@@ -501,7 +501,7 @@ implementation:
 
             implementation:
               container:
-                image: shopify-ml-demo:tangle-local
+                image: commerce-query-aware-search:tangle-local
                 command: ["python3", "/app/scripts/score_benchmark.py"]
                 args:
                   - "--results"

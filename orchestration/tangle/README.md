@@ -12,7 +12,7 @@ This keeps the DAG working end to end without requiring SkyPilot to be in Tangle
 
 Local prerequisites:
 - Docker daemon must be running
-- build the local Tangle image first with `docker build -t shopify-ml-demo:tangle-local .`
+- build the local Tangle image first with `docker build -t commerce-query-aware-search:tangle-local .`
 - if you want the structured branch to work, Ollama must be running on the host and reachable as `http://host.docker.internal:11434`
 
 Pipelines in `pipelines/` compose those components over the smoke benchmark to compare:
