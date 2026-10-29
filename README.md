@@ -95,6 +95,8 @@ Broad browse-style requests such as `show me the catalog` still underperform bec
 - [evaluation.py](src/shopify_ml_demo/evaluation.py): benchmark task loading and prediction generation.
 - [metrics.py](src/shopify_ml_demo/metrics.py): scoring logic and failure extraction.
 - [comparison.py](src/shopify_ml_demo/comparison.py): run comparison JSON and Markdown reporting.
+- [api.py](src/shopify_ml_demo/api.py): JSON search API for the web demo.
+- [web/](web): React + TypeScript side-by-side comparison UI.
 
 ## Hybrid Retrieval
 
@@ -124,6 +126,23 @@ The sample catalog is small and hand-written, so treat these numbers as a sanity
 python scripts/run_search_query.py "charzard" --retriever hybrid --catalog benchmarks/catalog/sample_catalog.json
 ```
 
+## Web Demo (React + TypeScript)
+
+[web/](web) is a small React + TypeScript app that runs the same query against two search configurations side by side. Each pane picks a retriever and can turn on Gemma query analysis. The candidate pane marks products that moved up, moved down, or are new compared with the baseline. When query analysis is on, it also shows the rewrite, the extracted constraints, and how many candidates passed the deterministic price and stock filter.
+
+![Side-by-side search demo](docs/images/web-demo.png)
+
+The UI calls a small JSON API ([api.py](src/shopify_ml_demo/api.py)) served with the Python standard library. Both run offline against the sample catalog:
+
+```bash
+python scripts/serve_api.py --catalog benchmarks/catalog/sample_catalog.json   # http://127.0.0.1:8000
+
+cd web
+npm install
+npm run dev        # http://localhost:5173, proxies /api to the Python server
+npm test           # Vitest + Testing Library
+```
+
 ## Repo Structure
 
 ```text
@@ -148,6 +167,7 @@ orchestration/
     pipelines/
 scripts/
   export_catalog.py
+  serve_api.py
   run_search_query.py
   run_search_benchmark.py
   score_benchmark.py
@@ -156,6 +176,8 @@ src/shopify_ml_demo/
 tests/
   unit/
   integration/
+web/
+  src/
 ```
 
 ## Quickstart (no API keys)
