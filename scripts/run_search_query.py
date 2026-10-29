@@ -13,7 +13,8 @@ if str(SRC) not in sys.path:
 
 from shopify_ml_demo.catalog import load_products
 from shopify_ml_demo.evaluation import normalize_query_analyzer
-from shopify_ml_demo.retrieval import build_retriever
+from shopify_ml_demo.embeddings import build_embedder
+from shopify_ml_demo.retrieval import RETRIEVER_KINDS, build_retriever
 from shopify_ml_demo.search import BaselineSearchEngine, StructuredSearchEngine
 
 
@@ -21,7 +22,15 @@ def main() -> None:
     # Run a single query for local debugging or ad hoc usage.
     parser = argparse.ArgumentParser(description="Run a single ecommerce search query.")
     parser.add_argument("query", type=str, help="Natural-language shopper query")
-    parser.add_argument("--retriever", choices=("overlap", "bm25"), default="bm25")
+    parser.add_argument("--retriever", choices=RETRIEVER_KINDS, default="bm25")
+    parser.add_argument(
+        "--embedder",
+        type=str,
+        default="hashing",
+        help="Embedder for dense/hybrid retrieval: 'hashing' (offline) or 'ollama:<model>' (e.g. ollama:nomic-embed-text)",
+    )
+    parser.add_argument("--fusion", choices=("convex", "rrf"), default="convex", help="Hybrid score fusion method")
+    parser.add_argument("--alpha", type=float, default=0.5, help="Dense weight for convex hybrid fusion")
     parser.add_argument(
         "--query-analyzer",
         "--analyzer",
@@ -46,7 +55,8 @@ def main() -> None:
         os.environ["OLLAMA_MODEL"] = query_analyzer
 
     products = load_products(args.catalog, limit=args.product_limit)
-    retriever = build_retriever(args.retriever, products)
+    embedder = build_embedder(args.embedder) if args.retriever in {"dense", "hybrid"} else None
+    retriever = build_retriever(args.retriever, products, embedder=embedder, fusion=args.fusion, alpha=args.alpha)
     if query_analyzer:
         engine = StructuredSearchEngine(retriever=retriever)
     else:

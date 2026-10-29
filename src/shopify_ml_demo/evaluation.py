@@ -6,6 +6,7 @@ from pathlib import Path
 from typing import Callable, Dict, Iterable, List, Optional
 
 from shopify_ml_demo.catalog import fetch_products
+from shopify_ml_demo.embeddings import build_embedder
 from shopify_ml_demo.retrieval import build_retriever
 from shopify_ml_demo.schemas import BenchmarkPrediction, BenchmarkRunSummary, BenchmarkTask, QueryAnalysis
 from shopify_ml_demo.search import BaselineSearchEngine, StructuredSearchEngine
@@ -80,6 +81,9 @@ def run_benchmark(
     k: int = 3,
     products: Optional[List[Dict[str, object]]] = None,
     analyzer: Optional[Callable[[str], QueryAnalysis]] = None,
+    embedder: str = "hashing",
+    fusion: str = "convex",
+    alpha: float = 0.5,
 ) -> BenchmarkRunSummary:
     # Execute benchmark tasks and persist predictions without scoring them.
     tasks = read_tasks(tasks_path)
@@ -88,7 +92,8 @@ def run_benchmark(
         os.environ["OLLAMA_MODEL"] = query_analyzer
 
     catalog_products = products if products is not None else fetch_products(limit=product_limit)
-    retriever = build_retriever(retriever_kind, catalog_products)
+    dense_embedder = build_embedder(embedder) if retriever_kind in {"dense", "hybrid"} else None
+    retriever = build_retriever(retriever_kind, catalog_products, embedder=dense_embedder, fusion=fusion, alpha=alpha)
 
     if query_analyzer:
         engine = StructuredSearchEngine(retriever=retriever, analyzer=analyzer) if analyzer is not None else StructuredSearchEngine(retriever=retriever)
