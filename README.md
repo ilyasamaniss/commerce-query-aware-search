@@ -88,12 +88,41 @@ Broad browse-style requests such as `show me the catalog` still underperform bec
 
 - [catalog.py](src/shopify_ml_demo/catalog.py): Shopify Storefront API client and catalog normalization.
 - [query_analysis.py](src/shopify_ml_demo/query_analysis.py): local Ollama/Gemma query interpretation.
-- [retrieval.py](src/shopify_ml_demo/retrieval.py): overlap and BM25 retrieval.
+- [retrieval.py](src/shopify_ml_demo/retrieval.py): overlap, BM25, dense, and hybrid retrieval.
+- [embeddings.py](src/shopify_ml_demo/embeddings.py): offline hashed n-gram embedder and Ollama neural embedder.
 - [filtering.py](src/shopify_ml_demo/filtering.py): deterministic hard-constraint enforcement.
 - [search.py](src/shopify_ml_demo/search.py): baseline and query-aware search engines.
 - [evaluation.py](src/shopify_ml_demo/evaluation.py): benchmark task loading and prediction generation.
 - [metrics.py](src/shopify_ml_demo/metrics.py): scoring logic and failure extraction.
 - [comparison.py](src/shopify_ml_demo/comparison.py): run comparison JSON and Markdown reporting.
+
+## Hybrid Retrieval
+
+Lexical BM25 is precise on exact terms but returns nothing for a misspelling like `charzard`. The retrieval layer now also offers:
+
+- `--retriever dense`: cosine similarity between query and product embeddings.
+- `--retriever hybrid`: fuses BM25 and dense scores. The default `--fusion convex` blends min-max normalized scores (`--alpha` is the dense weight, default 0.5). `--fusion rrf` uses Reciprocal Rank Fusion instead.
+
+Embedders are pluggable through `--embedder`:
+
+- `hashing` (default): hashed character 3–5-grams, fastText-style. It's deterministic, needs no model download, and runs in CI. It handles typos and partial words, but not synonyms.
+- `ollama:<model>`, for example `ollama:nomic-embed-text`: neural embeddings from the same local Ollama server used for query analysis.
+
+Hybrid retrieval composes with query analysis. The analyzer rewrites the query, the hybrid retriever generates candidates, and deterministic filtering still enforces price and stock.
+
+Retrieval-only results on the bundled sample catalog (full task set, k=5, no query analyzer, `hashing` embedder, default parameters with no tuning):
+
+| Retriever | Pass Rate | MRR@5 | Constraint Failures |
+| --- | ---: | ---: | ---: |
+| BM25 | 80% | 0.80 | 4 |
+| Dense (hashing) | 92% | 0.97 | 2 |
+| Hybrid (convex, α=0.5) | 89% | 0.95 | 4 |
+
+The sample catalog is small and hand-written, so treat these numbers as a sanity check of the mechanics rather than a result. The comparison that matters is BM25 vs. hybrid with `ollama:nomic-embed-text` on an exported snapshot of the live store, with and without the Gemma analyzer.
+
+```bash
+python scripts/run_search_query.py "charzard" --retriever hybrid --catalog benchmarks/catalog/sample_catalog.json
+```
 
 ## Repo Structure
 
@@ -298,6 +327,7 @@ The current working orchestration path is the local Tangle DAG. SkyPilot remains
 - Query analysis currently relies on a local Ollama-compatible API; query-aware runs fail closed if the analyzer is unavailable.
 - Constraint enforcement is intentionally limited to catalog-truth fields like price and stock.
 - Entity expansion improves recall for some semantic queries but is still heuristic.
+- The offline `hashing` embedder captures spelling, not meaning; semantic recall needs a neural embedder such as `ollama:nomic-embed-text`.
 
 ## Next Step
 
