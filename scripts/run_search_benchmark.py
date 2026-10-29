@@ -11,6 +11,7 @@ if str(SRC) not in sys.path:
     # Allow direct script execution without requiring PYTHONPATH.
     sys.path.insert(0, str(SRC))
 
+from shopify_ml_demo.catalog import load_catalog_snapshot
 from shopify_ml_demo.evaluation import normalize_query_analyzer, run_benchmark
 
 
@@ -28,6 +29,12 @@ def main() -> None:
         default=None,
         help="Enable query-aware benchmark with analyzer model (e.g., gemma3:4b)",
     )
+    parser.add_argument(
+        "--catalog",
+        type=Path,
+        default=None,
+        help="Read products from a catalog snapshot JSON instead of the live Storefront API",
+    )
     parser.add_argument("--product-limit", type=int, default=200)
     parser.add_argument("--k", type=int, default=3)
     args = parser.parse_args()
@@ -35,6 +42,10 @@ def main() -> None:
     query_analyzer = normalize_query_analyzer(args.query_analyzer)
     if query_analyzer:
         os.environ["OLLAMA_MODEL"] = query_analyzer
+
+    products = None
+    if args.catalog is not None:
+        products = load_catalog_snapshot(args.catalog)[: args.product_limit]
 
     try:
         summary = run_benchmark(
@@ -44,6 +55,7 @@ def main() -> None:
             query_analyzer=query_analyzer,
             product_limit=args.product_limit,
             k=args.k,
+            products=products,
         )
     except Exception as exc:
         raise SystemExit(f"Benchmark failed: {exc}") from exc

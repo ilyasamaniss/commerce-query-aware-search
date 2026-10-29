@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import json
+from pathlib import Path
 from typing import Any, Dict, List, Optional
 
 from shopify_ml_demo.config import load_shopify_settings
@@ -107,3 +109,29 @@ def fetch_products(limit: Optional[int] = 50) -> List[Dict[str, Any]]:
         after = page["endCursor"]
 
     return results
+
+
+def write_catalog_snapshot(path: Path, products: List[Dict[str, Any]]) -> None:
+    # Persist a catalog snapshot so runs can be reproduced without API access.
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("w", encoding="utf-8") as handle:
+        json.dump({"products": products}, handle, ensure_ascii=False, indent=2)
+        handle.write("\n")
+
+
+def load_catalog_snapshot(path: Path) -> List[Dict[str, Any]]:
+    # Load a catalog snapshot written by write_catalog_snapshot.
+    with path.open("r", encoding="utf-8") as handle:
+        payload = json.load(handle)
+    products = payload.get("products") if isinstance(payload, dict) else payload
+    if not isinstance(products, list):
+        raise RuntimeError(f"Catalog snapshot {path} has no product list")
+    return products
+
+
+def load_products(catalog_path: Optional[Path] = None, limit: Optional[int] = 50) -> List[Dict[str, Any]]:
+    # Read products from a snapshot when given one, otherwise from the live Storefront API.
+    if catalog_path is not None:
+        products = load_catalog_snapshot(catalog_path)
+        return products if limit is None else products[:limit]
+    return fetch_products(limit=limit)

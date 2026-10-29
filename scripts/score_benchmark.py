@@ -11,7 +11,7 @@ if str(SRC) not in sys.path:
     # Allow direct script execution without requiring PYTHONPATH.
     sys.path.insert(0, str(SRC))
 
-from shopify_ml_demo.catalog import fetch_products
+from shopify_ml_demo.catalog import load_products
 from shopify_ml_demo.metrics import write_score_artifacts
 
 
@@ -21,10 +21,16 @@ def main() -> None:
     parser.add_argument("--results", type=Path, required=True)
     parser.add_argument("--metrics-out", type=Path, required=True)
     parser.add_argument("--failures-out", type=Path, default=None)
+    parser.add_argument(
+        "--catalog",
+        type=Path,
+        default=None,
+        help="Read products from a catalog snapshot JSON instead of the live Storefront API",
+    )
     parser.add_argument("--k", type=int, default=5)
     args = parser.parse_args()
 
-    products = fetch_products(limit=None)
+    products = load_products(args.catalog, limit=None)
     scorecard = write_score_artifacts(
         results_path=args.results,
         metrics_out_path=args.metrics_out,

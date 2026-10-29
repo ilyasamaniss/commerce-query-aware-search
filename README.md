@@ -1,6 +1,8 @@
 # Commerce Query-Aware Search
 
-Applied ML/search project for a Pokemon-themed storefront built on the Shopify Storefront API. The repo is structured to show practical search engineering, deterministic commerce correctness, reproducible benchmarking, and clear orchestration boundaries for Tangle and SkyPilot.
+[![CI](https://github.com/ilyasamaniss/commerce-query-aware-search/actions/workflows/ci.yml/badge.svg)](https://github.com/ilyasamaniss/commerce-query-aware-search/actions/workflows/ci.yml)
+
+**LLM-powered e-commerce search:** combines LLM query understanding with BM25 keyword retrieval for product search, on a Pokemon-themed storefront built on the Shopify Storefront API. The repo is structured to show practical search engineering, deterministic commerce correctness, reproducible benchmarking, and clear orchestration boundaries for Tangle and SkyPilot.
 
 ## Overview
 
@@ -97,6 +99,8 @@ Broad browse-style requests such as `show me the catalog` still underperform bec
 
 ```text
 benchmarks/
+  catalog/
+    sample_catalog.json
   tasks/
     smoke.jsonl
     full.jsonl
@@ -114,6 +118,7 @@ orchestration/
     components/
     pipelines/
 scripts/
+  export_catalog.py
   run_search_query.py
   run_search_benchmark.py
   score_benchmark.py
@@ -122,6 +127,35 @@ src/shopify_ml_demo/
 tests/
   unit/
   integration/
+```
+
+## Quickstart (no API keys)
+
+The repo ships a small sample catalog, [benchmarks/catalog/sample_catalog.json](benchmarks/catalog/sample_catalog.json), that mirrors the demo store's product shape. Pass it with `--catalog` to run the baseline search, benchmark, and scoring without Shopify credentials or Ollama:
+
+```bash
+python3 -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt pytest
+pytest -q
+
+python scripts/run_search_query.py "pikachu lego" --catalog benchmarks/catalog/sample_catalog.json
+
+python scripts/run_search_benchmark.py \
+  --tasks benchmarks/tasks/smoke.jsonl \
+  --retriever bm25 \
+  --catalog benchmarks/catalog/sample_catalog.json \
+  --out artifacts/smoke/retriever=bm25__analyzer=none/predictions.jsonl
+
+python scripts/score_benchmark.py \
+  --results artifacts/smoke/retriever=bm25__analyzer=none/predictions.jsonl \
+  --metrics-out artifacts/smoke/retriever=bm25__analyzer=none/metrics.json \
+  --catalog benchmarks/catalog/sample_catalog.json
+```
+
+CI runs the unit tests and this offline smoke benchmark on every push. The sample catalog is illustrative; the results reported above come from the live storefront. To benchmark against a frozen copy of the real store, export it once with your credentials:
+
+```bash
+python scripts/export_catalog.py --out benchmarks/catalog/storefront_snapshot.json
 ```
 
 ## Local Setup
@@ -215,7 +249,7 @@ Tangle is used as a workflow orchestrator over stable CLI boundaries, not as an 
 - scoring
 - run comparison
 
-The smoke pipeline in [pipeline.yaml](orchestration/tangle/pipelines/search_experiment_smoke/pipeline.yaml) expresses the experiment flow:
+The smoke pipeline in [search experiment smoke pipeline](<orchestration/tangle/pipelines/search_experiment_smoke/search experiment smoke.pipeline.component.yaml>) expresses the experiment flow:
 
 1. baseline benchmark
 2. baseline scoring
