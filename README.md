@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/ilyasamaniss/commerce-query-aware-search/actions/workflows/ci.yml/badge.svg)](https://github.com/ilyasamaniss/commerce-query-aware-search/actions/workflows/ci.yml)
 
-Applied ML/search project for a Pokemon-themed storefront built on the Shopify Storefront API. The repo is structured to show practical search engineering, deterministic commerce correctness, reproducible benchmarking, and clear orchestration boundaries for Tangle and SkyPilot.
+**LLM-powered e-commerce search:** combines LLM query understanding with BM25 keyword retrieval for product search, on a Pokemon-themed storefront built on the Shopify Storefront API. The repo is structured to show practical search engineering, deterministic commerce correctness, reproducible benchmarking, and clear orchestration boundaries for Tangle and SkyPilot.
 
 ## Overview
 
