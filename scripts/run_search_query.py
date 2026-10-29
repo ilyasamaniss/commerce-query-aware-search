@@ -11,7 +11,7 @@ if str(SRC) not in sys.path:
     # Allow direct script execution without requiring PYTHONPATH.
     sys.path.insert(0, str(SRC))
 
-from shopify_ml_demo.catalog import fetch_products
+from shopify_ml_demo.catalog import load_products
 from shopify_ml_demo.evaluation import normalize_query_analyzer
 from shopify_ml_demo.retrieval import build_retriever
 from shopify_ml_demo.search import BaselineSearchEngine, StructuredSearchEngine
@@ -30,6 +30,12 @@ def main() -> None:
         default=None,
         help="Enable query-aware search with analyzer model (e.g., gemma3:4b)",
     )
+    parser.add_argument(
+        "--catalog",
+        type=Path,
+        default=None,
+        help="Read products from a catalog snapshot JSON instead of the live Storefront API",
+    )
     parser.add_argument("--product-limit", type=int, default=200)
     parser.add_argument("--k", type=int, default=3)
     parser.add_argument("--show-trace", action="store_true", help="Print tool trace after the answer")
@@ -39,7 +45,7 @@ def main() -> None:
     if query_analyzer:
         os.environ["OLLAMA_MODEL"] = query_analyzer
 
-    products = fetch_products(limit=args.product_limit)
+    products = load_products(args.catalog, limit=args.product_limit)
     retriever = build_retriever(args.retriever, products)
     if query_analyzer:
         engine = StructuredSearchEngine(retriever=retriever)

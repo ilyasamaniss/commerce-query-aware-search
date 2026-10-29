@@ -1,0 +1,595 @@
+{
+  "products": [
+    {
+      "id": "gid://shopify/Product/sample-001",
+      "title": "Pokemon Pikachu LEGO Building Set",
+      "handle": "pokemon-pikachu-lego-building-set",
+      "vendor": "Pokemon",
+      "productType": "Building Set",
+      "tags": [
+        "lego",
+        "pokemon",
+        "electric",
+        "yellow",
+        "starter"
+      ],
+      "availableForSale": true,
+      "description": "Buildable Pikachu LEGO set. Electric-type mouse Pokemon with red cheeks and a lightning-bolt tail. Main color: yellow.",
+      "featuredImage": null,
+      "priceRange": {
+        "minVariantPrice": {
+          "amount": "24.99",
+          "currencyCode": "USD"
+        },
+        "maxVariantPrice": {
+          "amount": "24.99",
+          "currencyCode": "USD"
+        }
+      },
+      "variants": [
+        {
+          "id": "gid://shopify/ProductVariant/sample-001",
+          "title": "Default Title",
+          "sku": "PKMN-LEGO-PIKACHU",
+          "availableForSale": true,
+          "price": {
+            "amount": "24.99",
+            "currencyCode": "USD"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/sample-002",
+      "title": "Pokemon Charizard LEGO Building Set",
+      "handle": "pokemon-charizard-lego-building-set",
+      "vendor": "Pokemon",
+      "productType": "Building Set",
+      "tags": [
+        "lego",
+        "pokemon",
+        "fire",
+        "flying",
+        "orange",
+        "dragon"
+      ],
+      "availableForSale": true,
+      "description": "Buildable Charizard LEGO set. Fire and Flying-type dragon Pokemon with large wings and a flame on its tail. Main color: orange.",
+      "featuredImage": null,
+      "priceRange": {
+        "minVariantPrice": {
+          "amount": "89.99",
+          "currencyCode": "USD"
+        },
+        "maxVariantPrice": {
+          "amount": "89.99",
+          "currencyCode": "USD"
+        }
+      },
+      "variants": [
+        {
+          "id": "gid://shopify/ProductVariant/sample-002",
+          "title": "Default Title",
+          "sku": "PKMN-LEGO-CHARIZARD",
+          "availableForSale": true,
+          "price": {
+            "amount": "89.99",
+            "currencyCode": "USD"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/sample-003",
+      "title": "Pokemon Bulbasaur LEGO Building Set",
+      "handle": "pokemon-bulbasaur-lego-building-set",
+      "vendor": "Pokemon",
+      "productType": "Building Set",
+      "tags": [
+        "lego",
+        "pokemon",
+        "grass",
+        "green",
+        "starter"
+      ],
+      "availableForSale": true,
+      "description": "Buildable Bulbasaur LEGO set. Grass and Poison-type starter Pokemon with a plant bulb on its back. Main color: green.",
+      "featuredImage": null,
+      "priceRange": {
+        "minVariantPrice": {
+          "amount": "19.99",
+          "currencyCode": "USD"
+        },
+        "maxVariantPrice": {
+          "amount": "19.99",
+          "currencyCode": "USD"
+        }
+      },
+      "variants": [
+        {
+          "id": "gid://shopify/ProductVariant/sample-003",
+          "title": "Default Title",
+          "sku": "PKMN-LEGO-BULBASAUR",
+          "availableForSale": true,
+          "price": {
+            "amount": "19.99",
+            "currencyCode": "USD"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/sample-004",
+      "title": "Pokemon Squirtle LEGO Building Set",
+      "handle": "pokemon-squirtle-lego-building-set",
+      "vendor": "Pokemon",
+      "productType": "Building Set",
+      "tags": [
+        "lego",
+        "pokemon",
+        "water",
+        "blue",
+        "starter",
+        "turtle"
+      ],
+      "availableForSale": false,
+      "description": "Buildable Squirtle LEGO set. Water-type tiny turtle Pokemon with a shell and curled tail. Main color: blue.",
+      "featuredImage": null,
+      "priceRange": {
+        "minVariantPrice": {
+          "amount": "21.99",
+          "currencyCode": "USD"
+        },
+        "maxVariantPrice": {
+          "amount": "21.99",
+          "currencyCode": "USD"
+        }
+      },
+      "variants": [
+        {
+          "id": "gid://shopify/ProductVariant/sample-004",
+          "title": "Default Title",
+          "sku": "PKMN-LEGO-SQUIRTLE",
+          "availableForSale": false,
+          "price": {
+            "amount": "21.99",
+            "currencyCode": "USD"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/sample-005",
+      "title": "Pokemon Eevee LEGO Building Set",
+      "handle": "pokemon-eevee-lego-building-set",
+      "vendor": "Pokemon",
+      "productType": "Building Set",
+      "tags": [
+        "lego",
+        "pokemon",
+        "normal",
+        "brown",
+        "fox"
+      ],
+      "availableForSale": true,
+      "description": "Buildable Eevee LEGO set. Normal-type evolution Pokemon with a fluffy cream collar and long ears. Main color: brown.",
+      "featuredImage": null,
+      "priceRange": {
+        "minVariantPrice": {
+          "amount": "27.99",
+          "currencyCode": "USD"
+        },
+        "maxVariantPrice": {
+          "amount": "27.99",
+          "currencyCode": "USD"
+        }
+      },
+      "variants": [
+        {
+          "id": "gid://shopify/ProductVariant/sample-005",
+          "title": "Default Title",
+          "sku": "PKMN-LEGO-EEVEE",
+          "availableForSale": true,
+          "price": {
+            "amount": "27.99",
+            "currencyCode": "USD"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/sample-006",
+      "title": "Pokemon Snorlax LEGO Building Set",
+      "handle": "pokemon-snorlax-lego-building-set",
+      "vendor": "Pokemon",
+      "productType": "Building Set",
+      "tags": [
+        "lego",
+        "pokemon",
+        "normal",
+        "blue",
+        "big"
+      ],
+      "availableForSale": true,
+      "description": "Buildable Snorlax LEGO set. Normal-type sleeping giant Pokemon known for napping all day. Main color: blue.",
+      "featuredImage": null,
+      "priceRange": {
+        "minVariantPrice": {
+          "amount": "64.99",
+          "currencyCode": "USD"
+        },
+        "maxVariantPrice": {
+          "amount": "64.99",
+          "currencyCode": "USD"
+        }
+      },
+      "variants": [
+        {
+          "id": "gid://shopify/ProductVariant/sample-006",
+          "title": "Default Title",
+          "sku": "PKMN-LEGO-SNORLAX",
+          "availableForSale": true,
+          "price": {
+            "amount": "64.99",
+            "currencyCode": "USD"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/sample-007",
+      "title": "Pokemon Mewtwo LEGO Building Set",
+      "handle": "pokemon-mewtwo-lego-building-set",
+      "vendor": "Pokemon",
+      "productType": "Building Set",
+      "tags": [
+        "lego",
+        "pokemon",
+        "psychic",
+        "purple",
+        "legendary"
+      ],
+      "availableForSale": false,
+      "description": "Buildable Mewtwo LEGO set. Psychic-type legendary Pokemon created in a laboratory. Main color: purple.",
+      "featuredImage": null,
+      "priceRange": {
+        "minVariantPrice": {
+          "amount": "79.99",
+          "currencyCode": "USD"
+        },
+        "maxVariantPrice": {
+          "amount": "79.99",
+          "currencyCode": "USD"
+        }
+      },
+      "variants": [
+        {
+          "id": "gid://shopify/ProductVariant/sample-007",
+          "title": "Default Title",
+          "sku": "PKMN-LEGO-MEWTWO",
+          "availableForSale": false,
+          "price": {
+            "amount": "79.99",
+            "currencyCode": "USD"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/sample-008",
+      "title": "Pokemon Gengar LEGO Building Set",
+      "handle": "pokemon-gengar-lego-building-set",
+      "vendor": "Pokemon",
+      "productType": "Building Set",
+      "tags": [
+        "lego",
+        "pokemon",
+        "ghost",
+        "purple"
+      ],
+      "availableForSale": true,
+      "description": "Buildable Gengar LEGO set. Ghost and Poison-type shadow Pokemon with a wide grin. Main color: purple.",
+      "featuredImage": null,
+      "priceRange": {
+        "minVariantPrice": {
+          "amount": "34.99",
+          "currencyCode": "USD"
+        },
+        "maxVariantPrice": {
+          "amount": "34.99",
+          "currencyCode": "USD"
+        }
+      },
+      "variants": [
+        {
+          "id": "gid://shopify/ProductVariant/sample-008",
+          "title": "Default Title",
+          "sku": "PKMN-LEGO-GENGAR",
+          "availableForSale": true,
+          "price": {
+            "amount": "34.99",
+            "currencyCode": "USD"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/sample-009",
+      "title": "Pokemon Jigglypuff LEGO Building Set",
+      "handle": "pokemon-jigglypuff-lego-building-set",
+      "vendor": "Pokemon",
+      "productType": "Building Set",
+      "tags": [
+        "lego",
+        "pokemon",
+        "fairy",
+        "pink",
+        "round"
+      ],
+      "availableForSale": true,
+      "description": "Buildable Jigglypuff LEGO set. Normal and Fairy-type balloon Pokemon that sings lullabies. Main color: pink.",
+      "featuredImage": null,
+      "priceRange": {
+        "minVariantPrice": {
+          "amount": "18.99",
+          "currencyCode": "USD"
+        },
+        "maxVariantPrice": {
+          "amount": "18.99",
+          "currencyCode": "USD"
+        }
+      },
+      "variants": [
+        {
+          "id": "gid://shopify/ProductVariant/sample-009",
+          "title": "Default Title",
+          "sku": "PKMN-LEGO-JIGGLYPUFF",
+          "availableForSale": true,
+          "price": {
+            "amount": "18.99",
+            "currencyCode": "USD"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/sample-010",
+      "title": "Pokemon Lucario LEGO Building Set",
+      "handle": "pokemon-lucario-lego-building-set",
+      "vendor": "Pokemon",
+      "productType": "Building Set",
+      "tags": [
+        "lego",
+        "pokemon",
+        "fighting",
+        "steel",
+        "blue",
+        "jackal"
+      ],
+      "availableForSale": true,
+      "description": "Buildable Lucario LEGO set. Fighting and Steel-type aura Pokemon with a jackal-like face. Main color: blue.",
+      "featuredImage": null,
+      "priceRange": {
+        "minVariantPrice": {
+          "amount": "44.99",
+          "currencyCode": "USD"
+        },
+        "maxVariantPrice": {
+          "amount": "44.99",
+          "currencyCode": "USD"
+        }
+      },
+      "variants": [
+        {
+          "id": "gid://shopify/ProductVariant/sample-010",
+          "title": "Default Title",
+          "sku": "PKMN-LEGO-LUCARIO",
+          "availableForSale": true,
+          "price": {
+            "amount": "44.99",
+            "currencyCode": "USD"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/sample-011",
+      "title": "Pokemon Rayquaza LEGO Building Set",
+      "handle": "pokemon-rayquaza-lego-building-set",
+      "vendor": "Pokemon",
+      "productType": "Building Set",
+      "tags": [
+        "lego",
+        "pokemon",
+        "dragon",
+        "flying",
+        "green",
+        "legendary"
+      ],
+      "availableForSale": true,
+      "description": "Buildable Rayquaza LEGO set. Dragon and Flying-type legendary sky serpent Pokemon. Main color: green.",
+      "featuredImage": null,
+      "priceRange": {
+        "minVariantPrice": {
+          "amount": "129.99",
+          "currencyCode": "USD"
+        },
+        "maxVariantPrice": {
+          "amount": "129.99",
+          "currencyCode": "USD"
+        }
+      },
+      "variants": [
+        {
+          "id": "gid://shopify/ProductVariant/sample-011",
+          "title": "Default Title",
+          "sku": "PKMN-LEGO-RAYQUAZA",
+          "availableForSale": true,
+          "price": {
+            "amount": "129.99",
+            "currencyCode": "USD"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/sample-012",
+      "title": "Pokemon Umbreon LEGO Building Set",
+      "handle": "pokemon-umbreon-lego-building-set",
+      "vendor": "Pokemon",
+      "productType": "Building Set",
+      "tags": [
+        "lego",
+        "pokemon",
+        "dark",
+        "black",
+        "yellow",
+        "moon"
+      ],
+      "availableForSale": false,
+      "description": "Buildable Umbreon LEGO set. Dark-type moonlight Pokemon with glowing yellow rings. Main color: black.",
+      "featuredImage": null,
+      "priceRange": {
+        "minVariantPrice": {
+          "amount": "29.99",
+          "currencyCode": "USD"
+        },
+        "maxVariantPrice": {
+          "amount": "29.99",
+          "currencyCode": "USD"
+        }
+      },
+      "variants": [
+        {
+          "id": "gid://shopify/ProductVariant/sample-012",
+          "title": "Default Title",
+          "sku": "PKMN-LEGO-UMBREON",
+          "availableForSale": false,
+          "price": {
+            "amount": "29.99",
+            "currencyCode": "USD"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/sample-013",
+      "title": "Pokemon Gyarados LEGO Building Set",
+      "handle": "pokemon-gyarados-lego-building-set",
+      "vendor": "Pokemon",
+      "productType": "Building Set",
+      "tags": [
+        "lego",
+        "pokemon",
+        "water",
+        "flying",
+        "blue",
+        "serpent"
+      ],
+      "availableForSale": true,
+      "description": "Buildable Gyarados LEGO set. Water and Flying-type atrocious sea serpent Pokemon. Main color: blue.",
+      "featuredImage": null,
+      "priceRange": {
+        "minVariantPrice": {
+          "amount": "74.99",
+          "currencyCode": "USD"
+        },
+        "maxVariantPrice": {
+          "amount": "74.99",
+          "currencyCode": "USD"
+        }
+      },
+      "variants": [
+        {
+          "id": "gid://shopify/ProductVariant/sample-013",
+          "title": "Default Title",
+          "sku": "PKMN-LEGO-GYARADOS",
+          "availableForSale": true,
+          "price": {
+            "amount": "74.99",
+            "currencyCode": "USD"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/sample-014",
+      "title": "Pokemon Dragonite LEGO Building Set",
+      "handle": "pokemon-dragonite-lego-building-set",
+      "vendor": "Pokemon",
+      "productType": "Building Set",
+      "tags": [
+        "lego",
+        "pokemon",
+        "dragon",
+        "flying",
+        "orange"
+      ],
+      "availableForSale": true,
+      "description": "Buildable Dragonite LEGO set. Dragon and Flying-type friendly dragon Pokemon with small wings. Main color: orange.",
+      "featuredImage": null,
+      "priceRange": {
+        "minVariantPrice": {
+          "amount": "69.99",
+          "currencyCode": "USD"
+        },
+        "maxVariantPrice": {
+          "amount": "69.99",
+          "currencyCode": "USD"
+        }
+      },
+      "variants": [
+        {
+          "id": "gid://shopify/ProductVariant/sample-014",
+          "title": "Default Title",
+          "sku": "PKMN-LEGO-DRAGONITE",
+          "availableForSale": true,
+          "price": {
+            "amount": "69.99",
+            "currencyCode": "USD"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Product/sample-015",
+      "title": "Pokemon Lapras LEGO Building Set",
+      "handle": "pokemon-lapras-lego-building-set",
+      "vendor": "Pokemon",
+      "productType": "Building Set",
+      "tags": [
+        "lego",
+        "pokemon",
+        "water",
+        "ice",
+        "blue",
+        "sea"
+      ],
+      "availableForSale": false,
+      "description": "Buildable Lapras LEGO set. Water and Ice-type transport Pokemon that carries people across the sea. Main color: blue.",
+      "featuredImage": null,
+      "priceRange": {
+        "minVariantPrice": {
+          "amount": "54.99",
+          "currencyCode": "USD"
+        },
+        "maxVariantPrice": {
+          "amount": "54.99",
+          "currencyCode": "USD"
+        }
+      },
+      "variants": [
+        {
+          "id": "gid://shopify/ProductVariant/sample-015",
+          "title": "Default Title",
+          "sku": "PKMN-LEGO-LAPRAS",
+          "availableForSale": false,
+          "price": {
+            "amount": "54.99",
+            "currencyCode": "USD"
+          }
+        }
+      ]
+    }
+  ]
+}
